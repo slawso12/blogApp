@@ -1,19 +1,27 @@
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import IndexScreen from './src/screens/IndexScreen';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const navigator = createStackNavigator(
+  {
+    // Home: HomeScreen,
+    Index: IndexScreen
+    // ResultsShow: ResultsShowScreen 
   },
-});
+  {
+    initialRouteName: 'Index',
+    defaultNavigationOptions: {
+      title: "Blog App"
+    }
+  }
+);
+
+ const App = createAppContainer(navigator);
+
+ // Wrapping the App within a custom component
+ export default () => {
+  return <App />;
+
+ }
